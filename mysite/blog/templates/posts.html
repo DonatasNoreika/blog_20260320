@@ -1,3 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}PRADŽIA{% endblock %}
+
+{% block content %}
+
 {% for post in posts %}
-<p>{{ post }}</p>
+<!-- Post content-->
+<article>
+    <!-- Post header-->
+    <header class="mb-4">
+        <h1 class="fw-bolder mb-1">{{ post.title }}!</h1>
+        <div class="text-muted fst-italic mb-2">Posted on {{ post.date_created }} by {{ post.author }}</div>
+    </header>
+    <!-- Preview image figure-->
+<!--                        <figure class="mb-4"><img class="img-fluid rounded" src="https://dummyimage.com/900x400/ced4da/6c757d.jpg" alt="..." /></figure>-->
+    <section class="mb-5">
+        <p class="fs-5 mb-4">{{ post.content }}</p>
+    </section>
+</article>
 {% endfor %}
+
+{% endblock %}
