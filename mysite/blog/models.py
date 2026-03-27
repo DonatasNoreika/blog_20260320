@@ -7,6 +7,7 @@ class Post(models.Model):
     content = HTMLField()
     author = models.ForeignKey(to=User, on_delete=models.CASCADE)
     date_created = models.DateTimeField(auto_now_add=True)
+    photo = models.ImageField(upload_to='post_photos', null=True, blank=True)
 
     def __str__(self):
         return self.title
