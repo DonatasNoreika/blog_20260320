@@ -20,5 +20,8 @@ class Comment(models.Model):
     author = models.ForeignKey(to=User, on_delete=models.CASCADE)
     date_created = models.DateTimeField(auto_now_add=True)
 
+    class Meta:
+        ordering = ['-pk']
+
     def __str__(self):
         return f"{self.author} ({self.date_created})"
