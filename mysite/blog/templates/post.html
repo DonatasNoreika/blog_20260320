@@ -20,6 +20,9 @@
     <section class="mb-5">
         <p class="fs-5 mb-4">{{ post.content | safe }}</p>
         <p>Komentarų: {{ post.comments.count }}</p>
+        <div>
+            <a href="{% url 'post_update' post.pk %}" class="btn btn-warning">Redaguoti</a>
+        </div>
     </section>
 </article>
 <!-- Comments section-->
