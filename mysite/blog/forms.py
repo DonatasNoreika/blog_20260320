@@ -6,7 +6,7 @@ from django.contrib.auth.forms import UserCreationForm
 class CustomUserCreateForm(UserCreationForm):
     class Meta:
         model = CustomUser
-        fields = ['username', 'password1', 'password1']
+        fields = ['username', 'password1', 'password2']
 
 
 class CommentForm(forms.ModelForm):
