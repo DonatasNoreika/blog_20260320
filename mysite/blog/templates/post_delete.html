@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}Įrašo pašalinimas{% endblock %}
+
+{% block content %}
+<h1>Įrašo pašalinimas</h1>
+<p>Ar tikrai norite ištrinti įrašą "{{ post.title }}"?</p>
+<form method="post" class="mb-4" enctype="multipart/form-data">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-primary">Taip</button>
+    <a href="{% url 'post' post.pk %}" class="btn btn-secondary">Ne</a>
+</form>
+
+{% endblock %}
