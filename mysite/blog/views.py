@@ -87,3 +87,18 @@ class SignUpView(generic.CreateView):
     form_class = CustomUserCreateForm
     template_name = 'signup.html'
     success_url = reverse_lazy('login')
+
+
+class PostCreateView(LoginRequiredMixin, generic.CreateView):
+    model = Post
+    template_name = "post_form.html"
+    fields = ['title', 'content', 'photo']
+    success_url = reverse_lazy("posts")
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+
+
+
+
