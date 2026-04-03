@@ -1,11 +1,12 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 from django.urls import reverse_lazy
-
 from .models import Post, Comment, CustomUser
 from django.views import generic
 from django.core.paginator import Paginator
 from django.db.models import Q
+from .forms import CustomUserCreateForm
+
 
 def posts(request):
     posts = Post.objects.order_by('-pk')
@@ -61,3 +62,9 @@ class ProfileUpdateView(LoginRequiredMixin, generic.UpdateView):
 
     def get_object(self, queryset = ...):
         return self.request.user
+
+
+class SignUpView(generic.CreateView):
+    form_class = CustomUserCreateForm
+    template_name = 'signup.html'
+    success_url = reverse_lazy('login')
