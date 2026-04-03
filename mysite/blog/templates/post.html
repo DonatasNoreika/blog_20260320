@@ -52,7 +52,8 @@
                     {{ comment.content | safe }}
                     {% if comment.author == user %}
                     <div>
-                        <a href="{% url 'comment_update' comment.pk %}" class="btn btn-warning">Redaguoti</a>
+                        <a href="{% url 'comment_update' comment.pk %}" class="btn btn-warning btn-sm">Redaguoti</a>
+                        <a href="{% url 'comment_delete' comment.pk %}" class="btn btn-danger btn-sm">Ištrinti</a>
                     </div>
                     {% endif %}
                 </div>

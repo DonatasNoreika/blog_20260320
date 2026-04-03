@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}Komentaro pašalinimas{% endblock %}
+
+{% block content %}
+<h1>Komentaro pašalinimas</h1>
+<p>Ar tikrai norite ištrinti komentarą "{{ comment.content }} - {{ comment.date_created }}"?</p>
+<form method="post" class="mb-4" enctype="multipart/form-data">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-primary">Taip</button>
+    <a href="{% url 'post' comment.post.pk %}" class="btn btn-secondary">Ne</a>
+</form>
+
+{% endblock %}
