@@ -10,7 +10,12 @@
     <!-- Post header-->
     <header class="mb-4">
         <h1 class="fw-bolder mb-1">{{ post.title }}!</h1>
-        <div class="text-muted fst-italic mb-2">{{ post.author }}, {{ post.date_created | date:"Y-m-d" }}</div>
+        <div class="text-muted fst-italic mb-2">
+            {% if post.author.photo %}
+            <img src="{{ post.author.photo.url }}" class="rounded-circle" style="width: 30px">
+            {% endif %}
+            {{ post.author }}, {{ post.date_created | date:"Y-m-d" }}
+        </div>
     </header>
     {% if post.photo %}
     <!-- Preview image figure-->
