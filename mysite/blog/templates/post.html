@@ -50,6 +50,11 @@
                 <div class="ms-3">
                     <div class="fw-bold">{{ comment.author }}, {{ comment.date_created | date:"Y-m-d H:i" }}</div>
                     {{ comment.content | safe }}
+                    {% if comment.author == user %}
+                    <div>
+                        <a href="{% url 'comment_update' comment.pk %}" class="btn btn-warning">Redaguoti</a>
+                    </div>
+                    {% endif %}
                 </div>
             </div>
             {% endfor %}
