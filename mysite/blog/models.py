@@ -1,11 +1,16 @@
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, AbstractUser
 from django.db import models
 from tinymce.models import HTMLField
+
+
+class CustomUser(AbstractUser):
+    photo = models.ImageField(upload_to="profile_pics", null=True, blank=True)
+
 
 class Post(models.Model):
     title = models.CharField()
     content = HTMLField()
-    author = models.ForeignKey(to=User, on_delete=models.CASCADE)
+    author = models.ForeignKey(to='blog.CustomUser', on_delete=models.CASCADE)
     date_created = models.DateTimeField(auto_now_add=True)
     photo = models.ImageField(upload_to='post_photos', null=True, blank=True)
 
@@ -18,7 +23,7 @@ class Comment(models.Model):
                              on_delete=models.CASCADE,
                              related_name='comments')
     content = models.TextField()
-    author = models.ForeignKey(to=User, on_delete=models.CASCADE)
+    author = models.ForeignKey(to='blog.CustomUser', on_delete=models.CASCADE)
     date_created = models.DateTimeField(auto_now_add=True)
 
     class Meta:
