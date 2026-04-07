@@ -15,7 +15,10 @@ from .my_settings import (SECRET_KEY,
                           DEBUG,
                           ALLOWED_HOSTS,
                           EMAIL_HOST_USER,
-                          EMAIL_HOST_PASSWORD)
+                          EMAIL_HOST_PASSWORD,
+                          STATICFILES_DIRS,
+                          STATIC_ROOT,
+                          STATIC_URL)
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -133,8 +136,6 @@ USE_TZ = False
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
-STATIC_URL = 'static/'
-
 TINYMCE_DEFAULT_CONFIG = {
     'height': 360,
     'width': 1120,
@@ -174,3 +175,9 @@ LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 
 AUTH_USER_MODEL = 'blog.CustomUser'
+
+STATICFILES_DIRS = STATICFILES_DIRS
+
+STATIC_ROOT = STATIC_ROOT
+
+STATIC_URL = STATIC_URL
