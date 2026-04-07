@@ -143,3 +143,7 @@ class CommentDeleteView(LoginRequiredMixin, UserPassesTestMixin, generic.DeleteV
 
     def test_func(self):
         return self.get_object().author == self.request.user
+
+
+def about(request):
+    return render(request, template_name="about.html")
